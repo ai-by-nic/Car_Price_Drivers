@@ -25,6 +25,7 @@ _Target = Comp − ( \$720 × Δyears ) − ( \$85 × Δmiles/1,000 ) + TitleAdj
 - Prep: VIN dedupe, drop non‑positive prices, winsorize price (1–99%), range filters for year/odometer, engineer `car_age`, collapse rare categories, impute + scale + one‑hot.
 - Models compared: **OLS**, **Ridge (L2)**, **Lasso (L1)** with **5‑fold cross‑validation**.
 - Metric: **MAE** primary; **RMSE** and **R²** reported.
+- **Tuning:** For Ridge and Lasso, we used **GridSearchCV** (5-fold) over a log-spaced grid of `alpha` values, selecting the model by **CV MAE**.
 
 ---
 
