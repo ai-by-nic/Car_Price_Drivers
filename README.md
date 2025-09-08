@@ -26,6 +26,7 @@ _Target = Comp − ( \$720 × Δyears ) − ( \$85 × Δmiles/1,000 ) + TitleAdj
 - Models compared: **OLS**, **Ridge (L2)**, **Lasso (L1)** with **5‑fold cross‑validation**.
 - Metric: **MAE** primary; **RMSE** and **R²** reported.
 - **Tuning:** For Ridge and Lasso, we used **GridSearchCV** (5-fold) over a log-spaced grid of `alpha` values, selecting the model by **CV MAE**.
+- **Why these metrics:** We **optimize MAE** because it reflects average dollar pricing error at the dealership; we also monitor **RMSE** to catch large misses and report **R²** for variance explained.
 
 ---
 
@@ -48,6 +49,16 @@ _Target = Comp − ( \$720 × Δyears ) − ( \$85 × Δmiles/1,000 ) + TitleAdj
 - **Monitor:** check average miss monthly; if it drifts, tune the add/deduct numbers.
 
 See the **Deployment — Dealer One‑Pager** section inside the notebook for a concise playbook.
+
+---
+
+## Next steps & recommendations
+
+- **Collect richer condition/options data** (inspection grade, trim/packages, AWD) to improve accuracy.
+- **Monitor model drift:** track monthly **MAE**; retrain/retune adjustments if MAE rises by > _Y_%.
+- **Segment by market/body type:** maintain separate priors where local dynamics differ (e.g., trucks/SUVs vs sedans).
+- **A/B test pricing thresholds** for title/condition adjustments to validate margins and turn rate.
+- **Expand features** as available (seller type, photo count/quality, option bundles) and re-evaluate feature importance.
 
 ---
 
